@@ -42,38 +42,74 @@ import processing.core.PImage;
  *    to the boundary. Put this code before you draw the pupils.
  */
 public class GooglyEyes extends PApplet {
-    static final int WIDTH = 800;
-    static final int HEIGHT = 600;
-    
-    PImage face;
-    
-    @Override
-    public void settings() {
-        size(WIDTH, HEIGHT);
-    }
-    
-    @Override
-    public void setup() {
-    	face = loadImage("OMG.jpg");
-    face.resize(WIDTH, HEIGHT);
-    background(face);
-    }
-    
-    @Override
-    public void draw() {
-    	 background(face);
-    	fill(255,255,255);
-        ellipse(200,275,200,200);
-        ellipse(575,275,200,200);
-       if (mouseX<=200 && mouseY<=275){
-    	  mouseX=200;
-    	  mouseY=275;
-       }
-       fill(0,0,0);
-        ellipse(mouseX, mouseY, 100, 100);
-    }
+	static final int WIDTH = 800;
+	static final int HEIGHT = 600;
 
-    static public void main(String[] args) {
-        PApplet.main(GooglyEyes.class.getName());
-    }
+	int leftEyeX = 200;
+	int leftEyeY = 275;
+	int rightEyeX = 575;
+	int rightEyeY = 275;
+	int EyeRadius = 100;
+
+	int leftPupilX, leftPupilY, rightPupilX, rightPupilY;
+	PImage face;
+
+	@Override
+	public void settings() {
+		size(WIDTH, HEIGHT);
+	}
+
+	@Override
+	public void setup() {
+		face = loadImage("OMG.jpg");
+		face.resize(WIDTH, HEIGHT);
+		background(face);
+	}
+
+	@Override
+	public void draw() {
+		System.out.println(rightPupilX);
+		System.out.println(rightPupilY);
+		background(face);
+		fill(255, 255, 255);
+		ellipse(leftEyeX, leftEyeY, 2 * EyeRadius, 2 * EyeRadius);
+		ellipse(rightEyeX, rightEyeY, 2 * EyeRadius, 2 * EyeRadius);
+		fill(0, 0, 0);
+
+		if (mouseX > 250) {
+			leftPupilX = 250;
+		} else if (mouseX < 150) {
+			leftPupilX = 150;
+		} else {
+			leftPupilX = mouseX;
+		}
+		if (mouseY > 325) {
+			leftPupilY = 325;
+		} else if (mouseY < 215) {
+			leftPupilY = 215;
+		} else {
+			leftPupilY = mouseY;
+		}
+		if (mouseX > 250) {
+			rightPupilX = 250;
+		} else if (mouseX <150) {
+			rightPupilX = 150;
+		} else {
+			rightPupilX = mouseX;
+		}
+		if (mouseY > 325) {
+			rightPupilY = 325;
+		} else if (mouseY < 215) {
+			rightPupilY = 215;
+		} else {
+			rightPupilY = mouseY;
+		}
+		ellipse(leftPupilX, leftPupilY, 100, 100);
+		ellipse(rightPupilX+375, rightPupilY, 100, 100);
+
+	}
+
+	static public void main(String[] args) {
+		PApplet.main(GooglyEyes.class.getName());
+	}
 }

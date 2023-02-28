@@ -28,7 +28,7 @@ three.length();
 		
 		
 	for (int a=0; a < three.length(); a++) {
-			
+			System.out.println("u is at index 1");
 		}
 		
 		

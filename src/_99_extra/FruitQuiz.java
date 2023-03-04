@@ -13,6 +13,7 @@ public class FruitQuiz extends KeyAdapter {
 	void makeQuestions() {
 		question1 = new JLabel("<html>Which is not a real fruit? <br> A: Dragon Fruit <br> B: Durian <br> C: Crazyberry</html>");
 		// 11. Make another question called "question2".  Use question1 above as a guide.
+		question2 = new JLabel("<html>Which fruit is acidic? <br> A: Banana <br> B: Orange <br> C: Mango</html>");
 	}
 
 	@Override
@@ -21,7 +22,9 @@ public class FruitQuiz extends KeyAdapter {
 		// 1. Print out the key code variable
 System.out.println(keyCode);
 		// 2. Make 3 int variables that hold the key codes for A, b, and C
-		
+		int a = 65;
+		int b = 66;
+		int c = 67;
 		// 14. Repeat steps 11, 12, and 13 for question3 and question4 - IMPORTANT: The questions must be in reverse order from top to bottom to work properly
 		
 		// 12. If question2 is showing,
@@ -31,16 +34,20 @@ System.out.println(keyCode);
 			
 		if (question1.isShowing()) {
 			// 3. If they selected the right fruit, do steps 4 and 7
+			if (keyCode == a) {
+				
 			
 				// 4. Call the correct() method
-				
+				correct();
 				// 7. Use the nextQuestion() method to go to question2
+			nextQuestion(question2);
 			
-			
+			}else {
 			// 8. else (if they touched something else)
 				
 				// 9. Call the incorrect() method
-		
+		incorrect();
+			}
 		}
 
 	}
